@@ -1,0 +1,53 @@
+.safar-container {
+  padding: 50px;
+  background-color: #e8f5e9; /* Light green background */
+  min-height: 100vh;
+}
+
+.safar-title {
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+.safar-subtitle {
+  font-size: 1.5rem;
+  color: #2e7d32;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 200px; /* Adjust the height as needed */
+  object-fit: cover; /* Ensures the image maintains its aspect ratio and fills the space */
+  border-radius: 10px; /* Optional: rounded corners for a modern look */
+}
+
+.card {
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.selected-card {
+  border: 2px solid #388e3c;
+  box-shadow: 0 0 15px rgba(0, 128, 0, 0.7);
+}
+
+.selection-container {
+  margin-top: 30px;
+}
+
+input[type="number"] {
+  font-size: 1.2rem;
+}
+
+button {
+  font-size: 1.2rem;
+}
+
+.bg-light-green {
+  background-color: #e8f5e9; /* Light green */
+}
