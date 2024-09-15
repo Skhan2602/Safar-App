@@ -1,54 +1,144 @@
 .safar-container {
-    padding: 50px;
-    background-color: #e8f5e9; /* Light green background */
-    min-height: 100vh;
-  }
-  
-  .safar-title {
-    font-size: 4rem;
-    font-weight: bold;
-  }
-  
-  .safar-subtitle {
-    font-size: 1.5rem;
-    color: #2e7d32;
-  }
-  
-  .card-img-top {
-    width: 100%;
-    height: 200px; /* Adjust the height as needed */
-    object-fit: cover; /* Ensures the image maintains its aspect ratio and fills the space */
-    border-radius: 10px; /* Optional: rounded corners for a modern look */
-  }
-  
-  .card {
-    border: none;
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .card:hover {
-    transform: scale(1.05);
-  }
-  
-  .selected-card {
-    border: 2px solid #388e3c;
-    box-shadow: 0 0 15px rgba(0, 128, 0, 0.7);
-  }
-  
-  .selection-container {
-    margin-top: 30px;
-  }
-  
-  input[type="number"] {
-    font-size: 1.2rem;
-  }
-  
-  button {
-    font-size: 1.2rem;
-  }
-  
-  .bg-light-green {
-    background-color: #e8f5e9; /* Light green */
-  }
-  
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-image: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+  background-attachment: fixed;
+}
+
+.safar-header {
+  padding: 5rem 0;
+  text-align: center;
+  background-image: url('./assets/tropical.jpg');  
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.header-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.header-content {
+  position: relative;
+  z-index: 1;
+}
+
+.safar-title {
+  font-size: 5rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.safar-subtitle {
+  font-size: 2rem;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.section-title {
+  font-size: 2rem;
+  color: #28a745;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.vacation-card {
+  cursor: pointer;
+  transition: all 0.3s;
+  border: none;
+  border-radius: 0.25rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  position: relative;
+  aspect-ratio: 1 / 1;  /* This ensures a square aspect ratio */
+  background-color: #e0e0e0;  /* Light grey background as placeholder */
+}
+
+.vacation-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.vacation-card.selected-card {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.vacation-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.vacation-card .card-img-overlay {
+  display: flex;
+  align-items: flex-end;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.vacation-card .card-title {
+  color: white;
+  margin-bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 0.5rem;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+
+.traveler-type-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.traveler-type-buttons .btn {
+  min-width: 150px;
+  transition: all 0.3s;
+}
+
+.traveler-type-buttons .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.generate-btn {
+  padding: 0.75rem 2.5rem;
+  font-size: 1.25rem;
+  border-radius: 50rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s;
+}
+
+.generate-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+.safar-footer {
+  margin-top: auto;
+  padding: 1rem 0;
+  background-color: #28a745;
+  color: white;
+  text-align: center;
+}
+
+.safar-footer p {
+  margin-bottom: 0;
+}

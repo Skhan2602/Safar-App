@@ -1,28 +1,89 @@
-.itinerary-content {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f8f9fa;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+:root {
+  --primary-color: #4CAF50;
+  --secondary-color: #45a049;
+  --background-color: #e8f5e9;
+  --text-color: #2e7d32;
+  --card-background: #ffffff;
+  --card-border: #81c784;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Roboto', sans-serif;
+}
+
+.itinerary-page {
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primary-color);
+}
+
+.card {
+  border-color: var(--card-border);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: bold;
 }
 
 .itinerary-day {
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #dee2e6;
+  margin-bottom: 1.5rem;
 }
 
-.itinerary-day:last-child {
-  border-bottom: none;
+.sites-to-visit h5 {
+  color: var(--secondary-color);
+  margin-top: 1rem;
 }
 
-.itinerary-day h3 {
-  color: #28a745;
-  margin-bottom: 10px;
+.list-group-item {
+  border-color: var(--card-border);
 }
 
-.itinerary-day p {
-  margin-bottom: 0;
-  white-space: pre-wrap;
+.chat-box {
+  margin-top: 2rem;
+}
+
+.chat-history {
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid var(--card-border);
+  border-radius: 0.25rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.chat-message {
+  margin-bottom: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+}
+
+.chat-message.user {
+  background-color: #e8f5e9;
+  text-align: right;
+}
+
+.chat-message.system {
+  background-color: #c8e6c9;
+}
+
+.btn-success {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-success:hover, .btn-success:focus, .btn-success:active {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(76, 175, 80, 0.25);
 }
