@@ -1,70 +1,133 @@
-# Getting Started with Create React App
+# Safar - AI Travel Itinerary Planner
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Safar is an AI-powered travel itinerary planner built using **React** for the frontend and **OpenAI's GPT** for generating custom itineraries. The project allows users to select their travel preferences such as destination type, duration, and travel style, and generates a tailored itinerary based on their selections.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Select from multiple vacation types such as Tropical, City, Mountain, Desert, and Countryside.
+- Choose how long you want to stay.
+- Pick a travel style: Adventurous, Relaxing, Cultural, or Nature-Lover.
+- Generate a detailed itinerary using OpenAI's GPT model.
+- Interactive chat feature to further modify or refine your itinerary.
 
-### `npm start`
+## Screenshots
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![Homepage](public/HomePage.JPG)
+*Homepage: Choose your dream destination, stay duration, and travel style.*
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![Itinerary Page](public/ItineraryPage.png)
+*Itinerary Page: View your personalized itinerary.*
 
-### `npm test`
+## Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **React** (Frontend)
+- **Bootstrap** (Styling)
+- **OpenAI API** (Generates itineraries)
+- **Node.js / Express.js** (Backend for serving API requests and React app)
+  
+## Getting Started
 
-### `npm run build`
+To get started with the project locally, follow the steps below.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Prerequisites
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Make sure you have the following installed:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [Node.js](https://nodejs.org/en/) (v14 or higher)
+- [npm](https://www.npmjs.com/) (v6 or higher)
+- An OpenAI API key (sign up [here](https://beta.openai.com/signup/))
 
-### `npm run eject`
+### Installation
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. **Clone the repository:**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```bash
+   git clone https://github.com/Skhan2602/Safar-App.git
+   cd Safar-App
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. **Install dependencies for the React frontend:**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+   ```bash
+   cd frontend
+   npm install
+   ```
 
-## Learn More
+3. **Install dependencies for the Node.js backend:**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   In the root folder of your project, run:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   ```bash
+   npm install
+   ```
 
-### Code Splitting
+### Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. **Set up the OpenAI API key:**
 
-### Analyzing the Bundle Size
+   Create a `.env` file in the root of the project and add your OpenAI API key:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+   ```bash
+   REACT_APP_OPENAI_API_KEY=your-openai-api-key
+   ```
 
-### Making a Progressive Web App
+2. **Backend Setup:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+   In the `server.js` file, ensure you have the proper configuration for serving the React app and handling API requests for the itinerary generation.
 
-### Advanced Configuration
+### Running the Application
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+1. **Run the Backend Server:**
 
-### Deployment
+   The backend serves the React app and handles API requests.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+   ```bash
+   node server.js
+   ```
 
-### `npm run build` fails to minify
+2. **Run the React Development Server:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+   To start the React app in development mode:
+
+   ```bash
+   npm start
+   ```
+
+   This will open the app at `http://localhost:3000`.
+
+### Folder Structure
+
+```bash
+Safar-App/
+├── frontend/                # React frontend
+│   ├── src/
+│   │   ├── components/
+│   │   ├── App.js           # Main App Component
+│   │   ├── ItineraryPage.js # Itinerary Page Component
+│   │   └── ...
+│   ├── public/
+│   └── ...
+├── server.js                # Node.js backend server
+├── package.json             # Backend dependencies
+└── README.md                # Project documentation
+```
+
+### Generating an Itinerary
+
+1. Go to the homepage and select your travel preferences:
+   - Choose a vacation type.
+   - Select the number of days for your trip.
+   - Pick your travel style.
+   
+2. Click **"Create My Dream Itinerary"** to generate a personalized travel plan.
+
+3. The generated itinerary will be displayed on the **Itinerary Page**, where you can interact with it further.
+
+### Customization
+
+- You can customize the **vacation types** and **travel styles** in the `Home.js` file by updating the arrays that define the available options.
+- You can modify the generated itinerary format in the `ItineraryPage.js` file by adjusting the API call and response handling logic.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
