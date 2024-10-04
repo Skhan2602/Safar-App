@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { generateItinerary } from './openaiService';
+import { generateItinerary } from './openaiService';        // API call to generate itinerary
 import { Container, Row, Col, Card, Form, Button, ListGroup, Modal } from 'react-bootstrap';
-import { FaLeaf, FaPaperPlane } from 'react-icons/fa';
+import { FaLeaf, FaPaperPlane } from 'react-icons/fa';      // Icons for UI
 import axios from 'axios';
 import './ItineraryPage.css';
 
 function ItineraryPage() {
-  const { state } = useLocation();
-  const [itinerary, setItinerary] = useState(state?.itinerary || '');
+  const { state } = useLocation();              // Get itinerary data passed through routing
+  const [itinerary, setItinerary] = useState(state?.itinerary || '');   // Store the itinerary
   const [destination, setDestination] = useState('');
   const [message, setMessage] = useState('');
   const [chatHistory, setChatHistory] = useState([]);
@@ -22,6 +22,7 @@ function ItineraryPage() {
     parseItinerary(itinerary);
   }, [itinerary]);
 
+  // Extract the destination from the itinerary and update state
   const parseItinerary = (itineraryText) => {
     const lines = itineraryText.split('\n');
     if (lines[0].startsWith('Destination:')) {
@@ -30,6 +31,7 @@ function ItineraryPage() {
     }
   };
 
+  // Handle modifying the itinerary via chat input and generate a new itinerary
   const handleSendMessage = async () => {
     if (message.trim()) {
       setChatHistory([...chatHistory, { role: 'user', content: message }]);
@@ -48,6 +50,7 @@ function ItineraryPage() {
     }
   };
 
+  // Format the itinerary into individual day cards
   const formatItinerary = (itineraryText) => {
     const dayBlocks = itineraryText.match(/(Day \d+:.*?)(?=Day \d+:|$)/gs) || [];
     return dayBlocks.map((dayBlock, index) => {
@@ -86,31 +89,32 @@ function ItineraryPage() {
     setEmailSent(false);
   };
 
+  // Handle sending the itinerary via email
   const handleEmailSubmit = async () => {
-    if (!email || !/\S+@\S+\.\S+/.test(email)) {
-      alert('Please enter a valid email address.');
-      return;
+  if (!email || !/\S+@\S+\.\S+/.test(email)) {
+    alert('Please enter a valid email address.');
+    return;
+  }
+
+  setLoading(true);
+  try {
+    const response = await axios.post('/api/share-itinerary', {     // POST request to send the itinerary
+      email,
+      itinerary: `Destination: ${destination}\n${itinerary}`,
+    });
+
+    if (response.data.message === 'Itinerary sent successfully') {
+      setEmailSent(true);
+    } else {
+      alert('Failed to send email: ' + response.data.message);
     }
-  
-    setLoading(true);
-    try {
-      const response = await axios.post('/api/share-itinerary', {
-        email,
-        itinerary: `Destination: ${destination}\n${itinerary}`,
-      });
-  
-      if (response.data.message === 'Itinerary sent successfully') {
-        setEmailSent(true);
-      } else {
-        alert('Failed to send email: ' + response.data.message);
-      }
-    } catch (error) {
-      console.error('Error sending email:', error);
-      alert('Error sending email.');
-    } finally {
-      setLoading(false);
-    }
-  };
+  } catch (error) {
+    console.error('Error sending email:', error);
+    alert('Error sending email.');
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <Container fluid className="itinerary-page py-5">

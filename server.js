@@ -8,10 +8,10 @@ app.use(cors()); // Add this line to enable CORS
 app.use(express.json()); 
 
 const transporter = nodemailer.createTransport({
-  host: 'smtp.mail.EMAIL-SERVICE.com',
+  host: 'smtp.mail.yahoo.com',
   auth: {
-    user: 'EMAIL',
-    pass: 'PASSOWORD',
+    user: 'your-email',
+    pass: 'your-password',
   },
 });
 
@@ -19,7 +19,7 @@ app.post('/api/share-itinerary', (req, res) => {
   const { email, itinerary } = req.body;
 
   const mailOptions = {
-    from: 'YOUR-EMAIL',
+    from: 'babarsher26@yahoo.com',
     to: email,
     subject: 'Your Green Adventure Itinerary',
     text: itinerary,
